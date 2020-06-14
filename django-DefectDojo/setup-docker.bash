@@ -45,9 +45,9 @@ elif [ "$FUNCTION" == "db" ]; then
   echo
   install_app
 
-  if [ "$DBTYPE" == "$MYSQL" ]; then
-    stop_local_mysql_db_server
-    set_random_mysql_db_pwd
+  if [ "$DBTYPE" == "$postgres" ]; then
+    stop_local_postgres_db_server
+    set_random_postgres_db_pwd
   fi
 
   echo

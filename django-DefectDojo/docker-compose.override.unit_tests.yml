@@ -23,15 +23,15 @@ services:
   initializer:
     environment:
       DD_INITIALIZE: 'false'
-  mysql:
+  postgres:
     ports:
       - target: 5432
         published: 5432
         protocol: tcp
         mode: host
     environment:
-      MYSQL_DATABASE: ${DD_TEST_DATABASE_NAME:-test_defectdojo}
+      postgres_DATABASE: ${DD_TEST_DATABASE_NAME:-test_defectdojo}
     volumes:
-       - defectdojo_data_unittest:/var/lib/mysql
+       - defectdojo_data_unittest:/var/lib/postgres
 volumes:
   defectdojo_data_unittest: {}

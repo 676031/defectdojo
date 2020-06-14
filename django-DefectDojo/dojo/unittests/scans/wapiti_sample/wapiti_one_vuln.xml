@@ -21,7 +21,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
       </results>

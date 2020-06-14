@@ -19,7 +19,7 @@ services:
   nginx:
     volumes:
       - './dojo/static/dojo:/usr/share/nginx/html/static/dojo'
-  mysql:
+  postgres:
     ports:
       - target: 5432
         published: 5432

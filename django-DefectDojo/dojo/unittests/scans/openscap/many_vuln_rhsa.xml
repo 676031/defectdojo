@@ -597,7 +597,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20060544" selected="true" severity="high">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2006:0544: mysql security update (Important)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2006:0544: postgres security update (Important)</title>
     <ident system="http://cve.mitre.org">CVE-2006-0903</ident>
     <ident system="http://cve.mitre.org">CVE-2006-1516</ident>
     <ident system="http://cve.mitre.org">CVE-2006-1517</ident>
@@ -1749,7 +1749,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20070152" selected="true" severity="medium">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2007:0152: mysql security update (Moderate)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2007:0152: postgres security update (Moderate)</title>
     <ident system="http://cve.mitre.org">CVE-2006-4226</ident>
     <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
       <check-content-ref name="oval:com.redhat.rhsa:def:20070152" href="com.redhat.rhsa-all.xml"/>
@@ -2669,7 +2669,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20070875" selected="true" severity="high">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2007:0875: mysql security update (Important)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2007:0875: postgres security update (Important)</title>
     <ident system="http://cve.mitre.org">CVE-2007-3780</ident>
     <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
       <check-content-ref name="oval:com.redhat.rhsa:def:20070875" href="com.redhat.rhsa-all.xml"/>
@@ -3281,7 +3281,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20071155" selected="true" severity="high">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2007:1155: mysql security update (Important)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2007:1155: postgres security update (Important)</title>
     <ident system="http://cve.mitre.org">CVE-2007-5925</ident>
     <ident system="http://cve.mitre.org">CVE-2007-5969</ident>
     <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4017,7 +4017,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20080364" selected="true" severity="low">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2008:0364: mysql security and bug fix update (Low)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2008:0364: postgres security and bug fix update (Low)</title>
     <ident system="http://cve.mitre.org">CVE-2006-0903</ident>
     <ident system="http://cve.mitre.org">CVE-2006-4031</ident>
     <ident system="http://cve.mitre.org">CVE-2006-4227</ident>
@@ -4477,7 +4477,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20080768" selected="true" severity="medium">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2008:0768: mysql security, bug fix, and enhancement update (Moderate)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2008:0768: postgres security, bug fix, and enhancement update (Moderate)</title>
     <ident system="http://cve.mitre.org">CVE-2006-3469</ident>
     <ident system="http://cve.mitre.org">CVE-2006-4031</ident>
     <ident system="http://cve.mitre.org">CVE-2007-2691</ident>
@@ -5133,7 +5133,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20090259" selected="true" severity="medium">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2009:0259: mod_auth_mysql security update (Moderate)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2009:0259: mod_auth_postgres security update (Moderate)</title>
     <ident system="http://cve.mitre.org">CVE-2008-2384</ident>
     <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
       <check-content-ref name="oval:com.redhat.rhsa:def:20090259" href="com.redhat.rhsa-all.xml"/>
@@ -6358,7 +6358,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20091289" selected="true" severity="medium">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2009:1289: mysql security and bug fix update (Moderate)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2009:1289: postgres security and bug fix update (Moderate)</title>
     <ident system="http://cve.mitre.org">CVE-2008-2079</ident>
     <ident system="http://cve.mitre.org">CVE-2008-3963</ident>
     <ident system="http://cve.mitre.org">CVE-2008-4456</ident>
@@ -7153,7 +7153,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20100109" selected="true" severity="medium">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2010:0109: mysql security update (Moderate)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2010:0109: postgres security update (Moderate)</title>
     <ident system="http://cve.mitre.org">CVE-2009-4019</ident>
     <ident system="http://cve.mitre.org">CVE-2009-4028</ident>
     <ident system="http://cve.mitre.org">CVE-2009-4030</ident>
@@ -7162,7 +7162,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20100110" selected="true" severity="medium">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2010:0110: mysql security update (Moderate)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2010:0110: postgres security update (Moderate)</title>
     <ident system="http://cve.mitre.org">CVE-2008-4098</ident>
     <ident system="http://cve.mitre.org">CVE-2008-4456</ident>
     <ident system="http://cve.mitre.org">CVE-2009-2446</ident>
@@ -7750,7 +7750,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20100442" selected="true" severity="high">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2010:0442: mysql security update (Important)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2010:0442: postgres security update (Important)</title>
     <ident system="http://cve.mitre.org">CVE-2010-1626</ident>
     <ident system="http://cve.mitre.org">CVE-2010-1848</ident>
     <ident system="http://cve.mitre.org">CVE-2010-1850</ident>
@@ -8623,7 +8623,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20100824" selected="true" severity="medium">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2010:0824: mysql security update (Moderate)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2010:0824: postgres security update (Moderate)</title>
     <ident system="http://cve.mitre.org">CVE-2010-1848</ident>
     <ident system="http://cve.mitre.org">CVE-2010-3681</ident>
     <ident system="http://cve.mitre.org">CVE-2010-3840</ident>
@@ -8632,7 +8632,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20100825" selected="true" severity="medium">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2010:0825: mysql security update (Moderate)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2010:0825: postgres security update (Moderate)</title>
     <ident system="http://cve.mitre.org">CVE-2010-3677</ident>
     <ident system="http://cve.mitre.org">CVE-2010-3680</ident>
     <ident system="http://cve.mitre.org">CVE-2010-3681</ident>
@@ -9069,7 +9069,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20101002" selected="true" severity="medium">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2010:1002: mod_auth_mysql security update (Moderate)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2010:1002: mod_auth_postgres security update (Moderate)</title>
     <ident system="http://cve.mitre.org">CVE-2008-2384</ident>
     <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
       <check-content-ref name="oval:com.redhat.rhsa:def:20101002" href="com.redhat.rhsa-all.xml"/>
@@ -9241,7 +9241,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20110164" selected="true" severity="medium">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2011:0164: mysql security update (Moderate)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2011:0164: postgres security update (Moderate)</title>
     <ident system="http://cve.mitre.org">CVE-2010-3677</ident>
     <ident system="http://cve.mitre.org">CVE-2010-3678</ident>
     <ident system="http://cve.mitre.org">CVE-2010-3679</ident>
@@ -11933,7 +11933,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20120105" selected="true" severity="high">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2012:0105: mysql security update (Important)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2012:0105: postgres security update (Important)</title>
     <ident system="http://cve.mitre.org">CVE-2011-2262</ident>
     <ident system="http://cve.mitre.org">CVE-2012-0075</ident>
     <ident system="http://cve.mitre.org">CVE-2012-0087</ident>
@@ -11994,7 +11994,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20120127" selected="true" severity="medium">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2012:0127: mysql security update (Moderate)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2012:0127: postgres security update (Moderate)</title>
     <ident system="http://cve.mitre.org">CVE-2010-1849</ident>
     <ident system="http://cve.mitre.org">CVE-2012-0075</ident>
     <ident system="http://cve.mitre.org">CVE-2012-0087</ident>
@@ -12857,7 +12857,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20120874" selected="true" severity="low">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2012:0874: mysql security and enhancement update (Low)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2012:0874: postgres security and enhancement update (Low)</title>
     <ident system="http://cve.mitre.org">CVE-2012-2102</ident>
     <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
       <check-content-ref name="oval:com.redhat.rhsa:def:20120874" href="com.redhat.rhsa-all.xml"/>
@@ -13812,7 +13812,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20121462" selected="true" severity="high">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2012:1462: mysql security update (Important)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2012:1462: postgres security update (Important)</title>
     <ident system="http://cve.mitre.org">CVE-2012-0540</ident>
     <ident system="http://cve.mitre.org">CVE-2012-1688</ident>
     <ident system="http://cve.mitre.org">CVE-2012-1689</ident>
@@ -13904,7 +13904,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20121551" selected="true" severity="high">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2012:1551: mysql security update (Important)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2012:1551: postgres security update (Important)</title>
     <ident system="http://cve.mitre.org">CVE-2012-5611</ident>
     <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
       <check-content-ref name="oval:com.redhat.rhsa:def:20121551" href="com.redhat.rhsa-all.xml"/>
@@ -13939,7 +13939,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20130121" selected="true" severity="low">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2013:0121: mysql security and bug fix update (Low)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2013:0121: postgres security and bug fix update (Low)</title>
     <ident system="http://cve.mitre.org">CVE-2012-4452</ident>
     <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
       <check-content-ref name="oval:com.redhat.rhsa:def:20130121" href="com.redhat.rhsa-all.xml"/>
@@ -14124,7 +14124,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20130180" selected="true" severity="high">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2013:0180: mysql security update (Important)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2013:0180: postgres security update (Important)</title>
     <ident system="http://cve.mitre.org">CVE-2012-2749</ident>
     <ident system="http://cve.mitre.org">CVE-2012-5611</ident>
     <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -14204,7 +14204,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20130219" selected="true" severity="medium">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2013:0219: mysql security update (Moderate)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2013:0219: postgres security update (Moderate)</title>
     <ident system="http://cve.mitre.org">CVE-2012-0572</ident>
     <ident system="http://cve.mitre.org">CVE-2012-0574</ident>
     <ident system="http://cve.mitre.org">CVE-2012-1702</ident>
@@ -15056,7 +15056,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20130772" selected="true" severity="high">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2013:0772: mysql security update (Important)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2013:0772: postgres security update (Important)</title>
     <ident system="http://cve.mitre.org">CVE-2012-5614</ident>
     <ident system="http://cve.mitre.org">CVE-2013-1506</ident>
     <ident system="http://cve.mitre.org">CVE-2013-1521</ident>
@@ -16529,7 +16529,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20140164" selected="true" severity="medium">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2014:0164: mysql security and bug fix update (Moderate)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2014:0164: postgres security and bug fix update (Moderate)</title>
     <ident system="http://cve.mitre.org">CVE-2013-5908</ident>
     <ident system="http://cve.mitre.org">CVE-2014-0001</ident>
     <ident system="http://cve.mitre.org">CVE-2014-0386</ident>
@@ -16564,7 +16564,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20140186" selected="true" severity="medium">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2014:0186: mysql55-mysql security update (Moderate)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2014:0186: postgres55-postgres security update (Moderate)</title>
     <ident system="http://cve.mitre.org">CVE-2013-3839</ident>
     <ident system="http://cve.mitre.org">CVE-2013-5807</ident>
     <ident system="http://cve.mitre.org">CVE-2013-5891</ident>
@@ -17039,7 +17039,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20140536" selected="true" severity="medium">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2014:0536: mysql55-mysql security update (Moderate)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2014:0536: postgres55-postgres security update (Moderate)</title>
     <ident system="http://cve.mitre.org">CVE-2014-0384</ident>
     <ident system="http://cve.mitre.org">CVE-2014-2419</ident>
     <ident system="http://cve.mitre.org">CVE-2014-2430</ident>
@@ -18341,7 +18341,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20141859" selected="true" severity="high">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2014:1859: mysql55-mysql security update (Important)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2014:1859: postgres55-postgres security update (Important)</title>
     <ident system="http://cve.mitre.org">CVE-2012-5615</ident>
     <ident system="http://cve.mitre.org">CVE-2014-2494</ident>
     <ident system="http://cve.mitre.org">CVE-2014-4207</ident>
@@ -20139,7 +20139,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20151628" selected="true" severity="medium">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2015:1628: mysql55-mysql security update (Moderate)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2015:1628: postgres55-postgres security update (Moderate)</title>
     <ident system="http://cve.mitre.org">CVE-2014-6568</ident>
     <ident system="http://cve.mitre.org">CVE-2015-0374</ident>
     <ident system="http://cve.mitre.org">CVE-2015-0381</ident>
@@ -23585,7 +23585,7 @@
     </check>
   </Rule>
   <Rule id="oval-com.redhat.rhsa-def-20170184" selected="true" severity="high">
-    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2017:0184: mysql security update (Important)</title>
+    <title xmlns:xhtml="http://www.w3.org/1999/xhtml">RHSA-2017:0184: postgres security update (Important)</title>
     <ident system="http://cve.mitre.org">CVE-2016-5616</ident>
     <ident system="http://cve.mitre.org">CVE-2016-6662</ident>
     <ident system="http://cve.mitre.org">CVE-2016-6663</ident>

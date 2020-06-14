@@ -1011,13 +1011,13 @@ function authenticate() {
     // SELECT * FROM users
 
     $con = getDatabaseConnection();
-    $result = mysqli_query($con, $query);
+    $result = postgresi_query($con, $query);
 
     $authenticated = false;
-    if ( $row = mysqli_fetch_row( $result ) ) {
+    if ( $row = postgresi_fetch_row( $result ) ) {
       $authenticated = true;
     }
-    mysqli_free_result( $result );
+    postgresi_free_result( $result );
     return $authenticated;
   }
 }
@@ -2534,9 +2534,9 @@ Connection conn2 = DriverManager.getConnection("jdbc:derby:memory:myDB;create=tr
 <pre>
 DriverManager.getConnection("jdbc:derby:memory:myDB;create=true?user=user&amp;password=password");
 
-DriverManager.getConnection("jdbc:mysql://address=(host=myhost1)(port=1111)(key1=value1)(user=sandy)(password=secret),address=(host=myhost2)(port=2222)(key2=value2)(user=sandy)(password=secret)/db");
+DriverManager.getConnection("jdbc:postgres://address=(host=myhost1)(port=1111)(key1=value1)(user=sandy)(password=secret),address=(host=myhost2)(port=2222)(key2=value2)(user=sandy)(password=secret)/db");
 
-DriverManager.getConnection("jdbc:mysql://sandy:secret@[myhost1:1111,myhost2:2222]/db");
+DriverManager.getConnection("jdbc:postgres://sandy:secret@[myhost1:1111,myhost2:2222]/db");
 
 String url = "jdbc:postgresql://localhost/test";
 Properties props = new Properties();
@@ -3719,11 +3719,11 @@ end up in the hands of an attacker. This is particularly true for applications t
 <pre>
 Connection conn = null;
 try {
-  conn = DriverManager.getConnection("jdbc:mysql://localhost/test?" +
+  conn = DriverManager.getConnection("jdbc:postgres://localhost/test?" +
         "user=steve&amp;password=blue"); // Noncompliant
   String uname = "steve";
   String password = "blue";
-  conn = DriverManager.getConnection("jdbc:mysql://localhost/test?" +
+  conn = DriverManager.getConnection("jdbc:postgres://localhost/test?" +
         "user=" + uname + "&amp;password=" + password); // Noncompliant
 
   java.net.PasswordAuthentication pa = new java.net.PasswordAuthentication("userName", "1234".toCharArray());  // Noncompliant
@@ -3734,7 +3734,7 @@ Connection conn = null;
 try {
   String uname = getEncryptedUser();
   String password = getEncryptedPass();
-  conn = DriverManager.getConnection("jdbc:mysql://localhost/test?" +
+  conn = DriverManager.getConnection("jdbc:postgres://localhost/test?" +
         "user=" + uname + "&amp;password=" + password);
 </pre>
 <h2>See</h2>
@@ -4328,12 +4328,12 @@ use of a database connection with an empty password is a clear indication of a d
   $username = "AppLogin";
   $password = "";
 
-  // MySQL
-  $conn = new mysqli($servername, $username, $password);
-  // MySQL
-  $conn = mysqli_connect($servername, $username, $password);
+  // postgres
+  $conn = new postgresi($servername, $username, $password);
+  // postgres
+  $conn = postgresi_connect($servername, $username, $password);
   // PDO way
-  $conn = new PDO("mysql:host=$servername;dbname=myDB", $username, $password);
+  $conn = new PDO("postgres:host=$servername;dbname=myDB", $username, $password);
   // Oracle
   $conn = oci_connect($username, $password, "//localhost/orcl");
   // MS SQL Server

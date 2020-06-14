@@ -25,7 +25,7 @@ spec:
             name: {{ $fullName }}
       env:
         - name: DD_DATABASE_USER
-          value: {{ if eq .Values.database "postgresql" }}{{ .Values.postgresql.postgresqlUsername }}{{ end }}{{ if eq .Values.database "mysql" }}root{{ end }}
+          value: {{ if eq .Values.database "postgresql" }}{{ .Values.postgresql.postgresqlUsername }}{{ end }}{{ if eq .Values.database "postgres" }}root{{ end }}
         - name: DD_CELERY_BROKER_PASSWORD
           valueFrom:
             secretKeyRef:
@@ -43,14 +43,14 @@ spec:
               # Use secret handled outside of the chart
               name: {{- if .Values.postgresql.enabled }} defectdojo-postgresql-specific {{- else }} {{ .Values.postgresql.existingSecret }} {{- end }}
               key: postgresql-password
-              {{- else if eq .Values.database "mysql" }}
-              # Use mysql chart secret
-              # name: {{- if .Values.mysql.enabled }} {{ $fullName }}-{{ .Values.database }} {{- else }} {{ .Values.mysql.mysqlPasswordSecret }} {{- end }}
+              {{- else if eq .Values.database "postgres" }}
+              # Use postgres chart secret
+              # name: {{- if .Values.postgres.enabled }} {{ $fullName }}-{{ .Values.database }} {{- else }} {{ .Values.postgres.postgresPasswordSecret }} {{- end }}
               # Use secret handled outside of the chart
-              name: {{- if .Values.mysql.enabled }} defectdojo-mysql-specific {{- else }} {{ .Values.mysql.mysqlPasswordSecret }} {{- end }}
-              key: mysql-password
+              name: {{- if .Values.postgres.enabled }} defectdojo-postgres-specific {{- else }} {{ .Values.postgres.postgresPasswordSecret }} {{- end }}
+              key: postgres-password
               {{- end }}
-              key: {{ if eq .Values.database "postgresql" }}{{ .Values.database }}-password{{ end }}{{ if eq .Values.database "mysql" }}{{ .Values.database }}-root-password{{ end }}
+              key: {{ if eq .Values.database "postgresql" }}{{ .Values.database }}-password{{ end }}{{ if eq .Values.database "postgres" }}{{ .Values.database }}-root-password{{ end }}
         - name: DD_DEBUG
           value: 'True'
   restartPolicy: Never

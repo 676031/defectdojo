@@ -30,7 +30,7 @@ jira==2.0.0
 PyGithub==1.47
 lxml==4.5.0
 Markdown==3.2.1
-mysqlclient==1.4.6
+postgresclient==1.4.6
 pandas>=0.25
 xlrd>=1.0.0
 pdfkit==0.6.1

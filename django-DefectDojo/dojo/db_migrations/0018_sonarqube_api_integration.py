@@ -7,7 +7,7 @@ import django.utils.timezone
 
 def update_collation(apps, schema_editor):
     print('Database vendor: {}'.format(schema_editor.connection.vendor))
-    if not schema_editor.connection.vendor.startswith('mysql'):
+    if not schema_editor.connection.vendor.startswith('postgres'):
         return
     schema_editor.execute('ALTER TABLE dojo_sonarqube_issue CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_bin')
 

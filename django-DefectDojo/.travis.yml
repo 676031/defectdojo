@@ -12,9 +12,9 @@ env:
     - TEST=flake8
     - TEST=integration_tests
     - TEST=docker
-    - BROKER=rabbitmq DATABASE=mysql
+    - BROKER=rabbitmq DATABASE=postgres
     - BROKER=rabbitmq DATABASE=postgresql
-    - BROKER=redis DATABASE=mysql
+    - BROKER=redis DATABASE=postgres
     - BROKER=redis DATABASE=postgresql
     - TEST=snyk
 matrix: 

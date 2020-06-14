@@ -2,7 +2,7 @@
 #
 
 function ubuntu_db_install() {
-	# Install the database type for this install - SQLite, MySQL, PostgreSQL
+	# Install the database type for this install - SQLite, postgres, PostgreSQL
 	case $DB_TYPE in
 	    "SQLite")
         echo "=============================================================================="
@@ -12,12 +12,12 @@ function ubuntu_db_install() {
 	    DEBIAN_FRONTEND=noninteractive sudo apt install -y sqlite3
         echo ""
 	    ;;
-	    "MySQL")
+	    "postgres")
         echo "=============================================================================="
-        echo "  Installing MySQL for DefectDojo"
+        echo "  Installing postgres for DefectDojo"
         echo "=============================================================================="
         echo ""
-	    DEBIAN_FRONTEND=noninteractive sudo apt install -y mysql-server libmysqlclient-dev
+	    DEBIAN_FRONTEND=noninteractive sudo apt install -y postgres-server libpostgresclient-dev
         echo ""
 	    ;;
 	    "PostgreSQL")
@@ -47,17 +47,17 @@ function ubuntu_db_config() {
         echo "  Starting $DB_TYPE server"
         echo "=============================================================================="
         echo ""
-	    sudo usermod -d /var/lib/mysql/ mysql > /dev/null 2>&1
-		if [ ! -d "/var/run/mysqld" ]; then
-	        sudo mkdir /var/run/mysqld
+	    sudo usermod -d /var/lib/postgres/ postgres > /dev/null 2>&1
+		if [ ! -d "/var/run/postgresd" ]; then
+	        sudo mkdir /var/run/postgresd
 		fi
-	    sudo chown -R mysql:mysql /var/lib/mysql /var/run/mysqld
-	    sudo service mysql start
+	    sudo chown -R postgres:postgres /var/lib/postgres /var/run/postgresd
+	    sudo service postgres start
         echo ""
     # Check that the remote DB is available
     else
         # Just try and run quit in the remote DB - verifies connectivity and creds provided work
-        if mysql -fs -h "$DB_HOST" -P "$DB_PORT" -u"$DB_USER" -p"$DB_PASS" -e "quit" > /dev/null 2>&1; then
+        if postgres -fs -h "$DB_HOST" -P "$DB_PORT" -u"$DB_USER" -p"$DB_PASS" -e "quit" > /dev/null 2>&1; then
             echo "=============================================================================="
             echo "  Remote $DB_TYPE server connectivey confirmed"
             echo "=============================================================================="
@@ -71,7 +71,7 @@ function ubuntu_db_config() {
         fi
     fi
 
-	# Check if MySQL DB for DefectDojo exists already
+	# Check if postgres DB for DefectDojo exists already
     echo "=============================================================================="
     echo "  Checking for existing DefectDojo database $DB_NAME in $DB_TYPE"
     echo "=============================================================================="
@@ -79,7 +79,7 @@ function ubuntu_db_config() {
     # Handle the case of an existing DB server - either remote or local
     if [ "$DB_EXISTS" = true ]; then
         # For existing DBs, the password provided should work so use it
-        if mysqlshow -h "$DB_HOST" -P "$DB_PORT" -u"$DB_USER" -p"$DB_PASS" "$DB_NAME" > /dev/null 2>&1; then
+        if postgresshow -h "$DB_HOST" -P "$DB_PORT" -u"$DB_USER" -p"$DB_PASS" "$DB_NAME" > /dev/null 2>&1; then
             # DB exists already
             echo "=============================================================================="
             echo "  Database named $DB_NAME in $DB_TYPE already exists"
@@ -91,7 +91,7 @@ function ubuntu_db_config() {
                 echo "  DB_DROP_EXISTING is true, dropping $DB_NAME in $DB_TYPE "
                 echo "=============================================================================="
                 echo ""
-                MYSQL_PWD="$DB_PASS" mysqladmin -f --host="$DB_HOST" --port="$DB_PORT" --user="$DB_USER" drop "$DB_NAME"
+                postgres_PWD="$DB_PASS" postgresadmin -f --host="$DB_HOST" --port="$DB_PORT" --user="$DB_USER" drop "$DB_NAME"
             else
                 echo "##############################################################################"
                 echo "  ERROR: DB_DROP_EXISTING is false, but $DB_NAME exists - exiting"
@@ -107,19 +107,19 @@ function ubuntu_db_config() {
             echo "=============================================================================="
             echo ""
             CR_DB="CREATE DATABASE $DB_NAME CHARACTER SET UTF8;"
-            if MYSQL_PWD="$DB_PASS" mysql -u $DB_USER -h "$DB_HOST" -P "$DB_PORT" -e "$CR_DB"; then
+            if postgres_PWD="$DB_PASS" postgres -u $DB_USER -h "$DB_HOST" -P "$DB_PORT" -e "$CR_DB"; then
                 # Setup DB user for DefectDojo to use
                 echo "=============================================================================="
                 echo "  Adding $DB_USER to the DefectDojo database"
                 echo "=============================================================================="
                 echo ""
                 DR_USR="DROP USER '$DB_USER'@'localhost'"
-                MYSQL_PWD="$DB_PASS" mysql -u $DB_USER -h "$DB_HOST" -P "$DB_PORT" -e "$DR_USR" >/dev/null 2>&1
+                postgres_PWD="$DB_PASS" postgres -u $DB_USER -h "$DB_HOST" -P "$DB_PORT" -e "$DR_USR" >/dev/null 2>&1
                 CR_USR="CREATE USER '$DB_USER'@'localhost' IDENTIFIED BY '$DB_PASS';"
-                MYSQL_PWD="$DB_PASS" mysql -u $DB_USER -h "$DB_HOST" -P "$DB_PORT"-e "$CR_USR"
+                postgres_PWD="$DB_PASS" postgres -u $DB_USER -h "$DB_HOST" -P "$DB_PORT"-e "$CR_USR"
                 GR_PRV="GRANT ALL PRIVILEGES ON $DB_NAME.* TO '$DB_USER'@'localhost';"
-                MYSQL_PWD="$DB_PASS" mysql -u $DB_USER -h "$DB_HOST" -P "$DB_PORT" -e "$GR_PRV"
-                MYSQL_PWD="$DB_PASS" mysql -u $DB_USER -h "$DB_HOST" -P "$DB_PORT" -e "FLUSH PRIVILEGES;"
+                postgres_PWD="$DB_PASS" postgres -u $DB_USER -h "$DB_HOST" -P "$DB_PORT" -e "$GR_PRV"
+                postgres_PWD="$DB_PASS" postgres -u $DB_USER -h "$DB_HOST" -P "$DB_PORT" -e "FLUSH PRIVILEGES;"
             else
                 echo "##############################################################################"
                 echo "  ERROR: Failed to create $DB_NAME in $DB_TYPE for DefectDojo, exiting..."
@@ -135,10 +135,10 @@ function ubuntu_db_config() {
         echo "  Seting root password for new $DB_TYPE install"
         echo "=============================================================================="
         echo ""
-        mysql -u "root" -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost'"
-        mysql -u "root" -e "SET PASSWORD = PASSWORD('${DB_ROOT}');"
+        postgres -u "root" -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost'"
+        postgres -u "root" -e "SET PASSWORD = PASSWORD('${DB_ROOT}');"
         # For newly installe DBs, use root user sincd $DB_USER can't exist yet
-        if mysqlshow -h "$DB_HOST" -P "$DB_PORT" -u"root" "$DB_NAME" > /dev/null 2>&1; then
+        if postgresshow -h "$DB_HOST" -P "$DB_PORT" -u"root" "$DB_NAME" > /dev/null 2>&1; then
             # DB exists already
             echo "=============================================================================="
             echo "  Database named $DB_NAME in $DB_TYPE already exists"
@@ -150,7 +150,7 @@ function ubuntu_db_config() {
                 echo "  DB_DROP_EXISTING is true, dropping $DB_NAME in $DB_TYPE "
                 echo "=============================================================================="
                 echo ""
-                mysqladmin -f -h "$DB_HOST" -P "$DB_PORT" -u "root" drop "$DB_NAME"
+                postgresadmin -f -h "$DB_HOST" -P "$DB_PORT" -u "root" drop "$DB_NAME"
             else
                 echo "##############################################################################"
                 echo "  ERROR: DB_DROP_EXISTING is false, but $DB_NAME exists - exiting"
@@ -165,19 +165,19 @@ function ubuntu_db_config() {
             echo "=============================================================================="
             echo ""
             CR_DB="CREATE DATABASE $DB_NAME CHARACTER SET UTF8;"
-            if MYSQL_PWD="$DB_ROOT" mysql -u "root" -h "$DB_HOST" -P "$DB_PORT" -e "$CR_DB"; then
+            if postgres_PWD="$DB_ROOT" postgres -u "root" -h "$DB_HOST" -P "$DB_PORT" -e "$CR_DB"; then
                 # Setup DB user for DefectDojo to use
                 echo "=============================================================================="
                 echo "  Adding $DB_USER to the DefectDojo database"
                 echo "=============================================================================="
                 echo ""
                 DR_USR="DROP USER '$DB_USER'@'localhost'"
-                MYSQL_PWD="$DB_ROOT" mysql -u "root" -h "$DB_HOST" -P "$DB_PORT" -e "$DR_USR" >/dev/null 2>&1
+                postgres_PWD="$DB_ROOT" postgres -u "root" -h "$DB_HOST" -P "$DB_PORT" -e "$DR_USR" >/dev/null 2>&1
                 CR_USR="CREATE USER '$DB_USER'@'localhost' IDENTIFIED BY '$DB_PASS';"
-                MYSQL_PWD="$DB_ROOT" mysql -u "root" -h "$DB_HOST" -P "$DB_PORT" -e "$CR_USR"
+                postgres_PWD="$DB_ROOT" postgres -u "root" -h "$DB_HOST" -P "$DB_PORT" -e "$CR_USR"
                 GR_PRV="GRANT ALL PRIVILEGES ON $DB_NAME.* TO '$DB_USER'@'localhost';"
-                MYSQL_PWD="$DB_ROOT" mysql -u "root" -h "$DB_HOST" -P "$DB_PORT" -e "$GR_PRV"
-                MYSQL_PWD="$DB_ROOT" mysql -u "root" -h "$DB_HOST" -P "$DB_PORT" -e "FLUSH PRIVILEGES;"
+                postgres_PWD="$DB_ROOT" postgres -u "root" -h "$DB_HOST" -P "$DB_PORT" -e "$GR_PRV"
+                postgres_PWD="$DB_ROOT" postgres -u "root" -h "$DB_HOST" -P "$DB_PORT" -e "FLUSH PRIVILEGES;"
             else
                 echo "##############################################################################"
                 echo "  ERROR: Failed to create new $DB_NAME in $DB_TYPE for DefectDojo, exiting..."
@@ -278,10 +278,10 @@ function create_dojo_settings() {
         # sqlite:///PATH
         DD_DATABASE_URL="sqlite:///defectdojo.db"
         ;;
-        "MySQL")
-        # mysql://USER:PASSWORD@HOST:PORT/NAME
+        "postgres")
+        # postgres://USER:PASSWORD@HOST:PORT/NAME
         SAFE_URL=$(urlenc "$DB_USER")":"$(urlenc "$DB_PASS")"@"$(urlenc "$DB_HOST")":"$(urlenc "$DB_PORT")"/"$(urlenc "$DB_NAME")
-        DD_DATABASE_URL="mysql://$SAFE_URL"
+        DD_DATABASE_URL="postgres://$SAFE_URL"
         ;;
         "PostgreSQL")
         # postgres://USER:PASSWORD@HOST:PORT/NAME
@@ -340,8 +340,8 @@ function ubuntu_dojo_install() {
 
     cd $DOJO_SOURCE
     $PIP install -r requirements.txt
-    #if [ "$DB_TYPE" = MySQL ]; then
-    #    $PIP install -r $SETUP_BASE/mysql.txt
+    #if [ "$DB_TYPE" = postgres ]; then
+    #    $PIP install -r $SETUP_BASE/postgres.txt
     #elif [ "$DB_TYPE" = PostgreSQL]; then
     #    $PIP install -r $SETUP_BASE/postgresql.txt
     #else
@@ -356,15 +356,15 @@ function ubuntu_dojo_install() {
     #if [ "$VENV_ACTIVE" = "0" ]; then
     #    #pip3 install --upgrade pip
     #    #pip3 install -r requirements.txt
-    #    if [ "$DB_TYPE" = MySQL ]; then
-    #        sudo -H $PIP install -r $SETUP_BASE/mysql.txt
+    #    if [ "$DB_TYPE" = postgres ]; then
+    #        sudo -H $PIP install -r $SETUP_BASE/postgres.txt
     #    # Add PostgreSQL here
     #    fi
     #else
     #    #sudo pip3 install --upgrade pip
     #    #sudo pip3 install -r requirements.txt
-    #    if [ "$DB_TYPE" = MySQL ]; then
-    #        sudo -H $PIP install -r $SETUP_BASE/mysql.txt
+    #    if [ "$DB_TYPE" = postgres ]; then
+    #        sudo -H $PIP install -r $SETUP_BASE/postgres.txt
     #    # Add PostgreSQL here
     #    fi
     #fi

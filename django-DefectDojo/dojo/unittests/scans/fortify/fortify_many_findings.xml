@@ -9641,10 +9641,10 @@ Some third-party products claim the ability to manage passwords in a more secure
 <FileName>application.properties</FileName>
 <FilePath>src/main/resources/application.properties</FilePath>
 <LineStart>4</LineStart>
-<Snippet>spring.datasource.url=jdbc:mysql://localhost:3306/java_sec_code?AllowPublicKeyRetrieval=true&amp;useSSL=false&amp;serverTimezone=UTC
+<Snippet>spring.datasource.url=jdbc:postgres://localhost:3306/java_sec_code?AllowPublicKeyRetrieval=true&amp;useSSL=false&amp;serverTimezone=UTC
 spring.datasource.username=root
 spring.datasource.password=woshishujukumima
-spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.driver-class-name=com.postgres.cj.jdbc.Driver
 mybatis.mapper-locations=classpath:mapper/*.xml</Snippet>
 <TargetFunction>spring.datasource.password()</TargetFunction>
                             </Primary>

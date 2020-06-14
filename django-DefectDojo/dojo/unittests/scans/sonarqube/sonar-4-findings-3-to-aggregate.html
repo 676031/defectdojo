@@ -1045,11 +1045,11 @@ end up in the hands of an attacker. This is particularly true for applications t
 <pre>
 Connection conn = null;
 try {
-  conn = DriverManager.getConnection("jdbc:mysql://localhost/test?" +
+  conn = DriverManager.getConnection("jdbc:postgres://localhost/test?" +
         "user=steve&amp;password=blue"); // Noncompliant
   String uname = "steve";
   String password = "blue";
-  conn = DriverManager.getConnection("jdbc:mysql://localhost/test?" +
+  conn = DriverManager.getConnection("jdbc:postgres://localhost/test?" +
         "user=" + uname + "&amp;password=" + password); // Noncompliant
 
   java.net.PasswordAuthentication pa = new java.net.PasswordAuthentication("userName", "1234".toCharArray());  // Noncompliant
@@ -1060,7 +1060,7 @@ Connection conn = null;
 try {
   String uname = getEncryptedUser();
   String password = getEncryptedPass();
-  conn = DriverManager.getConnection("jdbc:mysql://localhost/test?" +
+  conn = DriverManager.getConnection("jdbc:postgres://localhost/test?" +
         "user=" + uname + "&amp;password=" + password);
 </pre>
 <h2>See</h2>

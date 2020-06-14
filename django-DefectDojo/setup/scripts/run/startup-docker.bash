@@ -10,7 +10,7 @@ if [[ -z $PORT ]]; then
 fi
 
 # Check to see if the env file is setup
-if cat dojo/settings/.env.prod | grep -q "mysql://root:@localhost:3306/dojodb"; then
+if cat dojo/settings/.env.prod | grep -q "postgres://root:@localhost:3306/dojodb"; then
 	echo
 	echo "=============================================================================="
 	echo " Adjusting container settings"
@@ -18,8 +18,8 @@ if cat dojo/settings/.env.prod | grep -q "mysql://root:@localhost:3306/dojodb"; 
 	echo
 	source entrypoint_scripts/common/dojo-shared-resources.sh
 
-	# Reset mysql password
-	set_random_mysql_db_pwd
+	# Reset postgres password
+	set_random_postgres_db_pwd
 	DBTYPE=1
 	SQLUSER=root
 	SQLPWD=$DB_ROOT_PASS
@@ -43,7 +43,7 @@ if cat dojo/settings/.env.prod | grep -q "mysql://root:@localhost:3306/dojodb"; 
 	DB_ROOT_PASS_USER=`pwgen -scn $DB_ROOT_PASS_LEN 1`
 	entrypoint_scripts/common/setup-superuser.expect user2 "$DB_ROOT_PASS_USER"
 
-	sudo killall -v mysqld
+	sudo killall -v postgresd
 	sleep 4
 	echo
 	echo "=============================================================================="
@@ -54,8 +54,8 @@ if cat dojo/settings/.env.prod | grep -q "mysql://root:@localhost:3306/dojodb"; 
 fi
 
 # Startup DefectDojo Services #
-sudo chown -R mysql:mysql /var/lib/mysql /var/run/mysqld \
-&& sudo service mysql start
+sudo chown -R postgres:postgres /var/lib/postgres /var/run/postgresd \
+&& sudo service postgres start
 
 if [[ -z $ACTION ]]; then
   ACTION="a"

@@ -35,13 +35,13 @@ else
     echo "Checking the Database is up and accepting connections"
     echo "=============================================================================="
     echo
-    #Make sure MySQL is up and running, run the mysql script to check the port and report back
+    #Make sure postgres is up and running, run the postgres script to check the port and report back
     bash ./wait-for-it.sh $DD_DATABASE_HOST:$DD_DATABASE_PORT
 
     if [ $? -eq 0 ]; then
       echo "Database server is up and running."
       echo
-      if [ $(mysql -N -s -u$DD_DATABASE_USER -p$DD_DATABASE_PASSWORD $DD_DATABASE_NAME --host $DD_DATABASE_HOST --port $DD_DATABASE_PORT -e \
+      if [ $(postgres -N -s -u$DD_DATABASE_USER -p$DD_DATABASE_PASSWORD $DD_DATABASE_NAME --host $DD_DATABASE_HOST --port $DD_DATABASE_PORT -e \
           "select count(*) from information_schema.tables where table_schema='$DD_DATABASE_NAME' and table_name='dojo_product';") -eq 1 ]; then
           echo "DB Exists."
       else
@@ -56,7 +56,7 @@ else
       cd $DOJO_ROOT_DIR
       gunicorn --env DJANGO_SETTINGS_MODULE=dojo.settings.settings dojo.wsgi:application --bind 0.0.0.0:$PORT --workers 3 & celery -A dojo worker -l info --concurrency 3
     else
-      echo "MySQL server is down or dojo can't access mysql"
+      echo "postgres server is down or dojo can't access postgres"
       echo "Exiting startup script..."
       exit 1
     fi

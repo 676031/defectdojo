@@ -96,24 +96,24 @@ if [ -z "${TEST}" ]; then
 
   # Set Helm settings for the database
   case "${DATABASE}" in
-    mysql)
+    postgres)
       HELM_DATABASE_SETTINGS=" \
-        --set database=mysql \
+        --set database=postgres \
         --set postgresql.enabled=false \
-        --set mysql.enabled=true \
-        --set createMysqlSecret=true \
+        --set postgres.enabled=true \
+        --set createpostgresSecret=true \
       "
       ;;
     postgresql)
       HELM_DATABASE_SETTINGS=" \
         --set database=postgresql \
         --set postgresql.enabled=true \
-        --set mysql.enabled=false \
+        --set postgres.enabled=false \
         --set createPostgresqlSecret=true \
       "
       ;;
     *)
-      (>&2 echo "ERROR: 'DATABASE' must be 'mysql' or 'postgresql'")
+      (>&2 echo "ERROR: 'DATABASE' must be 'postgres' or 'postgresql'")
       exit 1
       ;;
   esac

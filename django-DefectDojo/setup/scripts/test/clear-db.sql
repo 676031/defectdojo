@@ -1,3 +1,3 @@
 drop database dojodb;
-use mysql;
+use postgres;
 delete from user where user='dojodbusr';

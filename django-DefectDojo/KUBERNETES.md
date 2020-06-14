@@ -73,7 +73,7 @@ helm install \
   --set createSecret=true \
   --set createRabbitMqSecret=true \
   --set createRedisSecret=true \
-  --set createMysqlSecret=true \
+  --set createpostgresSecret=true \
   --set createPostgresqlSecret=true
 ```
 
@@ -88,11 +88,11 @@ helm install \
   --set createSecret=true \
   --set createRabbitMqSecret=true \
   --set createRedisSecret=true \
-  --set createMysqlSecret=true \
+  --set createpostgresSecret=true \
   --set createPostgresqlSecret=true
 ```
 Note that you need only one of: 
-- postgresql or mysql
+- postgresql or postgres
 - rabbitmq or redis 
 
 It usually takes up to a minute for the services to startup and the
@@ -177,7 +177,7 @@ helm upgrade  defectdojo ./helm/defectdojo/ \
 ### Re-install the chart
 In case of issue or in any other situation where you need to re-install the chart, you can do it and re-use the same secrets.
 
-**Note that when using mysql, this will create a new database, while with postgresql you'll keep the same database (more information below)**
+**Note that when using postgres, this will create a new database, while with postgresql you'll keep the same database (more information below)**
 
 ```zsh
 # helm 3
@@ -234,7 +234,7 @@ helm install \
   --set createSecret=true \
   --set createRabbitMqSecret=true \
   --set createRedisSecret=true \
-  --set createMysqlSecret=true \
+  --set createpostgresSecret=true \
   --set createPostgresqlSecret=true
 
 # For high availability deploy multiple instances of Django, Celery and RabbitMQ
@@ -250,10 +250,10 @@ helm install \
   --set createSecret=true \
   --set createRabbitMqSecret=true \
   --set createRedisSecret=true \
-  --set createMysqlSecret=true \
+  --set createpostgresSecret=true \
   --set createPostgresqlSecret=true
 
-# Run highly available PostgreSQL cluster instead of MySQL - recommended setup
+# Run highly available PostgreSQL cluster instead of postgres - recommended setup
 # for production environment.
 helm install \
   ./helm/defectdojo \
@@ -264,7 +264,7 @@ helm install \
   --set celery.replicas=3 \
   --set rabbitmq.replicas=3 \
   --set django.ingress.secretName="minikube-tls" \
-  --set mysql.enabled=false \
+  --set postgres.enabled=false \
   --set database=postgresql \
   --set postgresql.enabled=true \
   --set postgresql.replication.enabled=true \
@@ -272,7 +272,7 @@ helm install \
   --set createSecret=true \
   --set createRabbitMqSecret=true \
   --set createRedisSecret=true \
-  --set createMysqlSecret=true \
+  --set createpostgresSecret=true \
   --set createPostgresqlSecret=true
 
 # Note: If you run `helm install defectdojo before, you will get an error
@@ -291,17 +291,17 @@ helm test defectdojo
 # Navigate to <https://defectdojo.default.minikube.local>.
 ```
 
-TODO: The MySQL volumes aren't persistent across `helm uninstall` operations. To
+TODO: The postgres volumes aren't persistent across `helm uninstall` operations. To
 make them persistent, you need to add an annotation to the persistent volume
 claim:
 
 ```zsh
-kubectl --namespace "${K8S_NAMESPACE}" patch pvc defectdojo-mysql -p \
+kubectl --namespace "${K8S_NAMESPACE}" patch pvc defectdojo-postgres -p \
   '{"metadata": {"annotations": {"\"helm.sh/resource-policy\"": "keep"}}}'
 ```
 
 See also
-<https://github.com/helm/charts/blob/master/stable/mysql/templates/pvc.yaml>.
+<https://github.com/helm/charts/blob/master/stable/postgres/templates/pvc.yaml>.
 
 However, that doesn't work and I haven't found out why. In a production
 environment, a redundant PostgreSQL cluster is the better option. As it uses
@@ -339,6 +339,6 @@ helm uninstall defectdojo
 
 To remove persistent objects not removed by uninstall (this will remove any database):  
 ```
-kubectl delete secrets defectdojo defectdojo-redis-specific defectdojo-rabbitmq-specific defectdojo-postgresql-specific defectdojo-mysql-specific
+kubectl delete secrets defectdojo defectdojo-redis-specific defectdojo-rabbitmq-specific defectdojo-postgresql-specific defectdojo-postgres-specific
 kubectl delete pvc data-defectdojo-rabbitmq-0 data-defectdojo-postgresql-0
 ```

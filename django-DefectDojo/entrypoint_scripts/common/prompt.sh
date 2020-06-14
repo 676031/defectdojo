@@ -206,14 +206,14 @@ prompt_for_config_vals() {
 	ANS="invalid"
 	while [ $ANS = "invalid" ]
     do
-	    read -p "  Select database type: (1) SQLite, (2) MySQL or (3) PostgreSQL: " DB_Q
+	    read -p "  Select database type: (1) SQLite, (2) postgres or (3) PostgreSQL: " DB_Q
 	    case $DB_Q in
 		    1)
 		    DB_TYPE="SQLite"
 		    ANS="valid"
 		    ;;
 		    2)
-		    DB_TYPE="MySQL"
+		    DB_TYPE="postgres"
 		    DB_PORT=${DB_PORT:-"3306"}
 		    ANS="valid"
 		    ;;

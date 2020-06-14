@@ -8,7 +8,7 @@ if [ "$DOCKER_USER" != "" ] && [  "$DOCKER_PASS" != "" ] ; then
     export REPO=appsecpipeline/django-defectdojo-dev
   fi
 
-  docker build -t $REPO "$REPO:$BRANCH_TAG$TRAVIS_TAG-mysql-self-contained" .
+  docker build -t $REPO "$REPO:$BRANCH_TAG$TRAVIS_TAG-postgres-self-contained" .
 
   if [ "$TRAVIS_BRANCH" == "master" ] ; then
     docker tag $REPO "$REPO:latest"

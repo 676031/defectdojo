@@ -21,7 +21,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="4dfee8be-d864-4624-a738-1b36753aa763">
@@ -41,7 +41,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="384e971a-7945-499e-89fb-93d612853659">
@@ -61,7 +61,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="c11f9fc3-e51c-4e7e-875b-c8079291f800">
@@ -81,7 +81,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="17dcc912-0cec-41b6-af90-ba0b9c985257">
@@ -101,7 +101,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="35e98c76-fa98-44d4-8179-434ccb7fb608">
@@ -121,7 +121,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="b6da77c0-8c0d-4a1f-bb55-620a1f864562">
@@ -141,7 +141,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="15c31a37-58a2-486a-911e-7844d19bc4a0">
@@ -161,7 +161,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="df98835a-4fcf-4b16-9d2a-08bd00618970">
@@ -181,7 +181,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="4633492a-f3a3-4f8e-aca1-e7549ee5d3bf">
@@ -201,7 +201,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="792fa673-b0ad-4781-b0bc-58583eca9672">
@@ -221,7 +221,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="0576ff30-e88e-415a-bed5-1d087bd3f3e2">
@@ -241,7 +241,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="e2920f94-d94c-4246-9695-30c269da2405">
@@ -261,7 +261,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="17f3a87e-9852-4a1c-9e2e-cc2797200d59">
@@ -281,7 +281,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="380dc456-b848-4c7c-b274-8f984e237619">
@@ -301,7 +301,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="02d90e37-5bf9-4846-a9f2-7d0cce3eab36">
@@ -321,7 +321,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="e099e4c1-e19e-4b21-aace-c6f1398bed6c">
@@ -341,7 +341,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="3b0a399b-7b8b-410d-8e5c-079b5065f2a8">
@@ -361,7 +361,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="43b26059-b106-4cf8-933c-e660e1606a75">
@@ -381,7 +381,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="d99dabb8-fb71-4600-b155-d550f3238984">
@@ -401,7 +401,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="157124fb-a623-4c9e-983d-2772b6048757">
@@ -421,7 +421,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="9b0b093c-9860-4c8a-bbd0-0798d12d3f02">
@@ -441,7 +441,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="434227b8-a604-4714-8287-c914faddc009">
@@ -461,7 +461,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="f13e3b56-02bf-42a4-a5ee-308c3b17a07b">
@@ -481,7 +481,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="f4582a3f-b07e-4622-be6e-64517708ce78">
@@ -501,7 +501,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="4f67571c-239c-4c2a-9998-c5be6cab8dca">
@@ -521,7 +521,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="5a1b90a0-071d-4449-b5f4-e12659fded5b">
@@ -541,7 +541,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="0f5f8d22-45b1-4da5-ad5a-572d0643cca6">
@@ -561,7 +561,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="485e4877-3a9e-4b28-96ee-b3e68050262d">
@@ -581,7 +581,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="ecb3f8f6-e9d3-4087-be7c-e2e980875ce4">
@@ -601,7 +601,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="19fce4d0-ff95-424e-841c-3dd8b9116ae9">
@@ -621,7 +621,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="97e00dc7-eb2f-4be9-a668-2abef201cf64">
@@ -641,7 +641,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="d837eab8-5648-4a1e-a567-5670413b7af3">
@@ -661,7 +661,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="6be2eb04-bd53-4497-a272-9e41f67d8017">
@@ -681,7 +681,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="33dc4836-265d-4bb8-b1fb-20bf5a3f8d18">
@@ -701,7 +701,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="cf70d2d0-933e-4480-bbac-eab839fb2b38">
@@ -721,7 +721,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="0020d53c-4c71-4b95-88bb-69b2eb6093b1">
@@ -741,7 +741,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="b28e8124-61fb-40e7-a1af-f4772fafd37a">
@@ -761,7 +761,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="c2415ca5-1201-4ebb-81f0-ef21090519f4">
@@ -781,7 +781,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="189de2e0-77e0-40f9-a5a8-30dcad03d014">
@@ -801,7 +801,7 @@
             </nvt>
             <threat>1</threat>
             <description>
-<![CDATA[Injection MySQL via une injection dans le paramètre jform%5Bid%5D]]>            </description>
+<![CDATA[Injection postgres via une injection dans le paramètre jform%5Bid%5D]]>            </description>
             <original_threat>1</original_threat>
          </result>
          <result id="898a14ce-292a-424a-b3b6-635df1d71cc9">

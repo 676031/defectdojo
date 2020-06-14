@@ -30,7 +30,7 @@
 <port protocol="tcp" portid="993"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="imaps" method="table" conf="3"/></port>
 <port protocol="tcp" portid="995"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="pop3s" method="table" conf="3"/></port>
 <port protocol="tcp" portid="2525"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="ms-v-worlds" method="table" conf="3"/></port>
-<port protocol="tcp" portid="3306"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="mysql" method="table" conf="3"/></port>
+<port protocol="tcp" portid="3306"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="postgres" method="table" conf="3"/></port>
 </ports>
 <times srtt="193191" rttvar="22985" to="285131"/>
 </host>

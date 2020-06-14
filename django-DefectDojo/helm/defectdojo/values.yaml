@@ -6,12 +6,12 @@ createSecret: false
 createRabbitMqSecret: false
 # create redis secret in defectdojo chart, outside of redis chart
 createRedisSecret: false
-# create mysql secret in defectdojo chart, outside of mysql chart
-createMysqlSecret: false
+# create postgres secret in defectdojo chart, outside of postgres chart
+createpostgresSecret: false
 # create postgresql secret in defectdojo chart, outside of postgresql chart
 createPostgresqlSecret: false
 ## Configuration value to select database type
-## Option to use "postgresql" or "mysql" database type, by default "mysql" is chosen
+## Option to use "postgresql" or "postgres" database type, by default "postgres" is chosen
 ## Set the "enable" field to true of the database type you select (if you want to use internal database) and false of the one you don't select
 database: postgresql
 host: defectdojo.default.minikube.local
@@ -104,19 +104,19 @@ initializer:
       cpu: 2000m
       memory: 256Mi
 
-mysql:
+postgres:
   enabled: false
-  mysqlUser: defectdojo
-  existingSecret: defectdojo-mysql-specific
-  mysqlDatabase: defectdojo
+  postgresUser: defectdojo
+  existingSecret: defectdojo-postgres-specific
+  postgresDatabase: defectdojo
   service:
     port: 3306  
-  # To use an external mySQL instance, set enabled to false and uncomment
+  # To use an external postgres instance, set enabled to false and uncomment
   # the line below:
-  # mysqlServer: ""
-  # To use an external secret for the password for an external mySQL instance,
+  # postgresServer: ""
+  # To use an external secret for the password for an external postgres instance,
   # set enabled to false and provide the name of the secret on the line below:
-  # mysqlPasswordSecret: ""  
+  # postgresPasswordSecret: ""
 
 postgresql:
   enabled: true

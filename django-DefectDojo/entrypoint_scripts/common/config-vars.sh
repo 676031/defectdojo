@@ -25,7 +25,7 @@ INSTALL_TYPE=${INSTALL_TYPE:-"Single Server"}
 ########################################################################
 # DB vars
 ########################################################################
-DB_TYPE=${DB_TYPE:-"MySQL"}  # Valid options: SQLite, MySQL, PostgreSQL
+DB_TYPE=${DB_TYPE:-"postgres"}  # Valid options: SQLite, postgres, PostgreSQL
 DB_LOCAL=${DB_LOCAL:-"true"}
 DB_EXISTS=${DB_EXISTS:-"false"}
 DB_ROOT=${DB_ROOT:-"vee0Thoanae1daePooz0ieka"}
@@ -76,7 +76,7 @@ DD_DEBUG=${DD_DEBUG:="False"}                              # Django Debug, defau
 DD_DJANGO_ADMIN_ENABLED=${DD_DJANGO_ADMIN_ENABLED:-"True"} # Enables Django Admin, defaults to True - either False or True
 DD_SECRET_KEY="GENERATED-DYNAMICALLY-AT-INSTALL-TIME"    # A secret key for a particular Django installation.
 DD_CREDENTIAL_AES_256_KEY="GENERATED-DYNAMICALLY-AT-INSTALL-TIME" # Key for encrypting credentials in the manager
-DD_DATABASE_URL=${DD_DATABASE_URL:-"mysql://dojodbusr:vee0Thoanae1daePooz0ieka@localhost:3306/dojodb"} # Database URL, options: postgres://, mysql://, sqlite://, to use unsafe characters encode with urllib.parse.encode
+DD_DATABASE_URL=${DD_DATABASE_URL:-"postgres://dojodbusr:vee0Thoanae1daePooz0ieka@localhost:3306/dojodb"} # Database URL, options: postgres://, postgres://, sqlite://, to use unsafe characters encode with urllib.parse.encode
 DD_ALLOWED_HOSTS=${DD_ALLOWED_HOSTS:-"*"}                # Hosts/domain names that are valid for this site - Separate accepted hosts with a comma for 2+ hostnames
 # WhiteNoise allows your web app to serve its own static files,
 # making it a self-contained unit that can be deployed anywhere without relying on nginx,
@@ -105,7 +105,7 @@ DD_PORT_SCAN_SOURCE_IP=${DD_PORT_SCAN_SOURCE_IP:-"127.0.0.1"} # Port scan source
 ########################################################################
 # Install variables used internally which can't be overridden          #
 ########################################################################
-SUPPORTED_DBS="SQLite MySQL PostgreSQL"  
+SUPPORTED_DBS="SQLite postgres PostgreSQL"
 INSTALL_OS="linux-gnu"
 INSTALL_DISTRO="Ubuntu"
 INSTALL_OS_VER="18.04"

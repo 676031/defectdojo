@@ -58,8 +58,8 @@ env = environ.Env(
     DD_CELERY_TASK_SERIALIZER=(str, 'pickle'),
     DD_FORCE_LOWERCASE_TAGS=(bool, True),
     DD_MAX_TAG_LENGTH=(int, 25),
-    DD_DATABASE_ENGINE=(str, 'django.db.backends.mysql'),
-    DD_DATABASE_HOST=(str, 'mysql'),
+    DD_DATABASE_ENGINE=(str, 'django.db.backends.postgres'),
+    DD_DATABASE_HOST=(str, 'postgres'),
     DD_DATABASE_NAME=(str, 'defectdojo'),
     # default django database name for testing is test_<dbname>
     DD_TEST_DATABASE_NAME=(str, 'test_defectdojo'),
@@ -763,9 +763,9 @@ LOGGING = {
     }
 }
 
-# As we require `innodb_large_prefix = ON` for MySQL, we can silence the
+# As we require `innodb_large_prefix = ON` for postgres, we can silence the
 # warning about large varchar with unique indices.
-SILENCED_SYSTEM_CHECKS = ['mysql.E001']
+SILENCED_SYSTEM_CHECKS = ['postgres.E001']
 
 # Issue on benchmark : "The number of GET/POST parameters exceeded settings.DATA_UPLOAD_MAX_NUMBER_FIELD S"
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10240

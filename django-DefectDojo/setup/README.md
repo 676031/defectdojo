@@ -25,7 +25,7 @@ All installs make these assumption:
 * All installs support an interactive and non-interactive install methods
 * All installation configuration lives in ./dojo/settings/template-env
 * * Running setup.bash without editing template-env assumes a single-server install.
-* * Running setup.bash without editing template-env non-interactively assumes a single-server install with MySQL
+* * Running setup.bash without editing template-env non-interactively assumes a single-server install with postgres
 * Any install configuration variable can be overridden by setting an environmental variable
 * One of the following Operating Systems is used as the base for the install
 * * Ubuntu Linux - officially supported versions: 16.04 LTS, 18.04 LTS
@@ -71,14 +71,14 @@ Install configuration is in [config-vars.sh](scripts/common/config-vars.sh) cont
 **Format for this list:** *install option* [default value] - *definition*
 
 * PROMPT [true] - Run the install in interactive mode aka prompt the user for config values
-* DB_TYPE [MySQL] - The database type to be used by DefectDojo
+* DB_TYPE [postgres] - The database type to be used by DefectDojo
 * DB_LOCAL [true] - Boolean for if the database is installed locally aka on the same OS as DefectDojo
 * DB_EXISTS [false] - Boolean for if the database already exists for DefectDojo to use aka doesn't need to be installed
 * DB_NAME [dojodb] - Name of the database created to store DefectDojo data
 * DB_USER [dojodbusr] - Database username used to access the DefectDojo database
 * DB_PASS [vee0Thoanae1daePooz0ieka] - Default password used only for Dev installs, otherwise a random 24 character password is created at install time
 * DB_HOST [localhost] - Database hostname where the DefectDojo database is located
-* DB_PORT [3306] - Port database is listening on, default port is for the default database MySQL
+* DB_PORT [3306] - Port database is listening on, default port is for the default database postgres
 * DB_DROP_EXISTING [true] - If the database name already exists in database server for DefectDojo, drop that database if this is true.  If false and a database name match occurs, throw an error and exit the installer.
 * OS_USER=${OS_USER:-"dojo-srv"}
 * OS_PASS=${OS_PASS:-"wahlieboojoKa8aitheibai3"}
@@ -109,6 +109,6 @@ Configuration items for setup.py are in template-env in ./dojo/settings/ and con
 * SETUP_BASE : The full path to where the setup.bash file is located e.g ./setup if starting from the Dojo repository root
 * REPO_BASE : The full path to where the DefectDojo source was cloned usually /opt/dojo/django-DefectDojo
 * LIB_PATH : The full path to where the configuration values and libraries are for the DefectDojo installer which is SETUP_BASE + /scripts/common/
-* DB_TYPPE : The database type DefectDojo will use - currently either SQLite, MySQL or PostgreSQL
+* DB_TYPPE : The database type DefectDojo will use - currently either SQLite, postgres or PostgreSQL
 
 

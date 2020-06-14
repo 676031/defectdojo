@@ -9,38 +9,38 @@ services:
     depends_on:
       - nginx
       - uwsgi
-    entrypoint: ['/wait-for-it.sh', 'mysql:3306', '-t', '30', '--', '/entrypoint-integration-tests.sh']
+    entrypoint: ['/wait-for-it.sh', 'postgres:3306', '-t', '30', '--', '/entrypoint-integration-tests.sh']
     environment:
       DD_BASE_URL: 'http://nginx:8080/'
       DD_ADMIN_USER: ${DD_ADMIN_USER:-admin}
       DD_ADMIN_PASSWORD: ${DD_ADMIN_PASSWORD:-AdminsLoveIntegrationtests!}
   uwsgi:
-    entrypoint: ['/wait-for-it.sh', 'mysql:3306', '-t', '30', '--', '/entrypoint-uwsgi-dev.sh']
+    entrypoint: ['/wait-for-it.sh', 'postgres:3306', '-t', '30', '--', '/entrypoint-uwsgi-dev.sh']
     volumes:
       - '.:/app:z'
     environment:
       DD_DEBUG: 'True'
-      DD_DATABASE_URL: ${DD_TEST_DATABASE_URL:-mysql://defectdojo:defectdojo@mysql:3306/test_defectdojo}
+      DD_DATABASE_URL: ${DD_TEST_DATABASE_URL:-postgres://defectdojo:defectdojo@postgres:3306/test_defectdojo}
   celerybeat:
     environment:
-      DD_DATABASE_URL: ${DD_TEST_DATABASE_URL:-mysql://defectdojo:defectdojo@mysql:3306/test_defectdojo}
+      DD_DATABASE_URL: ${DD_TEST_DATABASE_URL:-postgres://defectdojo:defectdojo@postgres:3306/test_defectdojo}
   celeryworker:
     environment:
-      DD_DATABASE_URL: ${DD_TEST_DATABASE_URL:-mysql://defectdojo:defectdojo@mysql:3306/test_defectdojo}
+      DD_DATABASE_URL: ${DD_TEST_DATABASE_URL:-postgres://defectdojo:defectdojo@postgres:3306/test_defectdojo}
   initializer:
     environment:
       DD_INITIALIZE: 'true'
-      DD_DATABASE_URL: ${DD_TEST_DATABASE_URL:-mysql://defectdojo:defectdojo@mysql:3306/test_defectdojo}
+      DD_DATABASE_URL: ${DD_TEST_DATABASE_URL:-postgres://defectdojo:defectdojo@postgres:3306/test_defectdojo}
       DD_ADMIN_PASSWORD: ${DD_ADMIN_PASSWORD:-AdminsLoveIntegrationtests!}
-  mysql:
+  postgres:
     ports:
       - target: 3306
         published: 3306
         protocol: tcp
         mode: host
     environment:
-      MYSQL_DATABASE: ${DD_TEST_DATABASE_NAME:-test_defectdojo}
+      postgres_DATABASE: ${DD_TEST_DATABASE_NAME:-test_defectdojo}
     volumes:
-       - defectdojo_data_unittest:/var/lib/mysql
+       - defectdojo_data_unittest:/var/lib/postgres
 volumes:
   defectdojo_data_unittest: {}

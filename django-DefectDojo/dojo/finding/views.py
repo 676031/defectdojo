@@ -586,7 +586,7 @@ def prefetch_for_findings(findings):
         prefetched_findings = prefetched_findings.prefetch_related('test__engagement__product__jira_pkey_set__conf')
         prefetched_findings = prefetched_findings.prefetch_related('found_by')
         prefetched_findings = prefetched_findings.prefetch_related('risk_acceptance_set')
-        # we could try to prefetch only the latest note with SubQuery and OuterRef, but I'm getting that MySql doesn't support limits in subqueries.
+        # we could try to prefetch only the latest note with SubQuery and OuterRef, but I'm getting that postgres doesn't support limits in subqueries.
         prefetched_findings = prefetched_findings.prefetch_related('notes')
         prefetched_findings = prefetched_findings.prefetch_related('tagged_items__tag')
     return prefetched_findings
@@ -1712,7 +1712,7 @@ def apply_cwe_mitigation(apply_to_findings, template, update=True):
                 count = Finding.objects.filter(active=True, verified=True, cwe=template.cwe)
 
             if update:
-                # MySQL won't allow an 'update in statement' so loop will have to do
+                # postgres won't allow an 'update in statement' so loop will have to do
                 for finding in count:
                     finding.mitigation = template.mitigation
                     finding.impact = template.impact

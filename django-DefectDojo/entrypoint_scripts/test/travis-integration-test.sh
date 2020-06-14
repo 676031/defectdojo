@@ -14,7 +14,7 @@ export DOJO_ADMIN_USER='admin'
 export DD_ADMIN_PASSWORD='admin'
 export DOJO_ADMIN_PASSWORD=$DD_ADMIN_PASSWORD
 export CONTAINER_NAME=defect_dojo_integration
-docker build --target dev-mysql-self-contained -t $REPO .
+docker build --target dev-postgres-self-contained -t $REPO .
 docker run -e DD_ADMIN_PASSWORD=$DD_ADMIN_PASSWORD -e ACTION=p -d -p 127.0.0.1:8000:8000 --name=$CONTAINER_NAME $REPO
 docker logs $CONTAINER_NAME
 # Turn off Zap tests while re-configuring how they run

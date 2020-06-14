@@ -19,7 +19,7 @@ AUTO_DOCKER=
 
 # Supported databases
 export SQLITE=0
-export MYSQL=1
+export postgres=1
 export POSTGRES=2
 
 while getopts 'hr:y:b:d:' opt; do
@@ -33,8 +33,8 @@ while getopts 'hr:y:b:d:' opt; do
             FUNCTION=$OPTARG
             ;;
         d)
-            if [[ "$OPTARG" == "MYSQL" ]]; then
-                DBTYPE=$MYSQL
+            if [[ "$OPTARG" == "postgres" ]]; then
+                DBTYPE=$postgres
             elif [[ "$OPTARG" == "POSTGRES" ]]; then
                 DBTYPE=$POSTGRES
             else
@@ -198,9 +198,9 @@ function setupdojo() {
 }
 
 function prompt_db_type() {
-    read -p "Select database type: 0.) SQLite, 1.) MySQL or 2.) Postgres: " DBTYPE
+    read -p "Select database type: 0.) SQLite, 1.) postgres or 2.) Postgres: " DBTYPE
     if [ "$DBTYPE" == "$SQLITE" ] \
-        || [ "$DBTYPE" == "$MYSQL" ] \
+        || [ "$DBTYPE" == "$postgres" ] \
         || [ "$DBTYPE" == "$POSTGRES" ] ; then
     	echo "Setting up database"
     else
@@ -209,11 +209,11 @@ function prompt_db_type() {
     fi
 }
 
-# Ensures the mysql application DB is present
-function ensure_mysql_application_db() {
+# Ensures the postgres application DB is present
+function ensure_postgres_application_db() {
     # Allow script to be called non-interactively using:
     if [ "$AUTO_DOCKER" == "yes" ]; then
-        echo "Setting values for MySQL install"
+        echo "Setting values for postgres install"
         if [ -z "$DD_DATABASE_HOST" ]; then
             DD_DATABASE_HOST="localhost"
         fi
@@ -234,7 +234,7 @@ function ensure_mysql_application_db() {
         fi
     fi
 
-    if mysql -fs --protocol=TCP -h "$DD_DATABASE_HOST" -P "$DD_DATABASE_PORT" -u"$DD_DATABASE_USER" -p"$DD_DATABASE_PASSWORD" "$DD_DATABASE_NAME" >/dev/null 2>&1 </dev/null; then
+    if postgres -fs --protocol=TCP -h "$DD_DATABASE_HOST" -P "$DD_DATABASE_PORT" -u"$DD_DATABASE_USER" -p"$DD_DATABASE_PASSWORD" "$DD_DATABASE_NAME" >/dev/null 2>&1 </dev/null; then
         echo "Database $DD_DATABASE_NAME already exists!"
         echo
         if [ "$AUTO_DOCKER" == "yes" ] || [ "$BATCH_MODE" == "yes" ]; then
@@ -247,20 +247,20 @@ function ensure_mysql_application_db() {
             read -p "Drop database $DD_DATABASE_NAME? [Y/n] " DELETE
         fi
         if [[ ! $DELETE =~ ^[nN]$ ]]; then
-            mysqladmin -f --protocol=TCP --host="$DD_DATABASE_HOST" --port="$DD_DATABASE_PORT" --user="$DD_DATABASE_USER" --password="$DD_DATABASE_PASSWORD" drop "$DD_DATABASE_NAME"
-            mysqladmin    --protocol=TCP --host="$DD_DATABASE_HOST" --port="$DD_DATABASE_PORT" --user="$DD_DATABASE_USER" --password="$DD_DATABASE_PASSWORD" create "$DD_DATABASE_NAME"
+            postgresadmin -f --protocol=TCP --host="$DD_DATABASE_HOST" --port="$DD_DATABASE_PORT" --user="$DD_DATABASE_USER" --password="$DD_DATABASE_PASSWORD" drop "$DD_DATABASE_NAME"
+            postgresadmin    --protocol=TCP --host="$DD_DATABASE_HOST" --port="$DD_DATABASE_PORT" --user="$DD_DATABASE_USER" --password="$DD_DATABASE_PASSWORD" create "$DD_DATABASE_NAME"
         fi
     else
         echo "Setting password..."
-        # Set the root password for mysql
-        set_random_mysql_db_pwd
-        sudo service mysql start
-        if mysqladmin --protocol=TCP --host="$DD_DATABASE_HOST" --port="$DD_DATABASE_PORT" --user="$DD_DATABASE_USER" --password="$DD_DATABASE_PASSWORD" create $DD_DATABASE_NAME; then
+        # Set the root password for postgres
+        set_random_postgres_db_pwd
+        sudo service postgres start
+        if postgresadmin --protocol=TCP --host="$DD_DATABASE_HOST" --port="$DD_DATABASE_PORT" --user="$DD_DATABASE_USER" --password="$DD_DATABASE_PASSWORD" create $DD_DATABASE_NAME; then
             echo "Created database $DD_DATABASE_NAME."
         else
             echo "Error! Failed to create database $DD_DATABASE_NAME. Check your credentials."
             echo
-            ensure_mysql_application_db
+            ensure_postgres_application_db
         fi
     fi
 }
@@ -306,8 +306,8 @@ function ensure_postgres_application_db() {
 function ensure_application_db() {
     # Setup the application DB
     echo "Ensure application DB is present"
-    if [ "$DBTYPE" == "$MYSQL" ]; then
-        ensure_mysql_application_db
+    if [ "$DBTYPE" == "$postgres" ]; then
+        ensure_postgres_application_db
     elif [ "$DBTYPE" == "$POSTGRES" ]; then
         ensure_postgres_application_db
     fi
@@ -363,32 +363,32 @@ function install_db() {
     BREW_CMD=$(which brew)
 
     if [[ ! -z "$YUM_CMD" ]]; then
-        if [ "$DBTYPE" == $MYSQL ]; then
-            echo "Installing MySQL client (and server if not already installed)"
-            sudo yum install -y mariadb-server mysql-devel
+        if [ "$DBTYPE" == $postgres ]; then
+            echo "Installing postgres client (and server if not already installed)"
+            sudo yum install -y mariadb-server postgres-devel
         elif [ "$DBTYPE" == $POSTGRES ]; then
             echo "Installing Postgres client (and server if not already installed)"
             sudo yum install -y postgresql-devel postgresql postgresql-contrib
         fi
     elif [[ ! -z "$APT_GET_CMD" ]]; then
-        if [ "$DBTYPE" == $MYSQL ]; then
-            echo "Installing MySQL client (and server if not already installed)"
+        if [ "$DBTYPE" == $postgres ]; then
+            echo "Installing postgres client (and server if not already installed)"
             if [ "$AUTO_DOCKER" == "yes" ]; then
-              DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server pwgen libmysqlclient-dev
-              echo "MySQL client (and server if not already installed) setup complete"
-              sudo service mysql start
+              DEBIAN_FRONTEND=noninteractive apt-get install -y postgres-server pwgen libpostgresclient-dev
+              echo "postgres client (and server if not already installed) setup complete"
+              sudo service postgres start
             else
-              sudo apt-get install -y libmysqlclient-dev mysql-server
+              sudo apt-get install -y libpostgresclient-dev postgres-server
             fi
         elif [ "$DBTYPE" == $POSTGRES ]; then
             echo "Installing Postgres client (and server if not already installed)"
             sudo apt-get install -y libpq-dev postgresql postgresql-contrib
         fi
     elif [[ ! -z "$BREW_CMD" ]]; then
-        if [ "$DBTYPE" == $MYSQL ]; then
-            echo "Installing MySQL client"
-            brew install mysql@5.7
-	    brew link mysql@5.7 --force
+        if [ "$DBTYPE" == $postgres ]; then
+            echo "Installing postgres client"
+            brew install postgres@5.7
+	    brew link postgres@5.7 --force
         elif [ "$DBTYPE" == $POSTGRES ]; then
             echo "Installing Postgres client"
             brew install postgresql
@@ -407,8 +407,8 @@ function setup_batch_mode() {
   echo
   IFS=":"
   read DBTYPE DBNAME SQLUSER SQLPWD SQLHOST SQLPORT<<<"$PARSE_DB_URL"
-  if [ $DBTYPE=="mysql" ]; then
-    DBTYPE=$MYSQL
+  if [ $DBTYPE=="postgres" ]; then
+    DBTYPE=$postgres
   elif [ $DBTYPE=="postgres" ]; then
     DBTYPE=$POSTGRES
   else
@@ -446,9 +446,9 @@ function prepare_settings_file() {
     # DD_DATABASE_URL can be set as an environment variable, if not construct
     if [ "$DBTYPE" == "$SQLITE" ]; then
         echo 'DD_DATABASE_URL="sqlite:///defectdojo.db"' >> ${ENV_SETTINGS_FILE}
-    elif [ "$DBTYPE" == "$MYSQL" ]; then
+    elif [ "$DBTYPE" == "$postgres" ]; then
         SAFE_URL=$(urlenc "$DD_DATABASE_USER")":"$(urlenc "$DD_DATABASE_PASSWORD")"@"$(urlenc "$DD_DATABASE_HOST")":"$(urlenc "$DD_DATABASE_PORT")"/"$(urlenc "$DD_DATABASE_NAME")
-        echo "DD_DATABASE_URL=mysql://$SAFE_URL" >> ${ENV_SETTINGS_FILE}
+        echo "DD_DATABASE_URL=postgres://$SAFE_URL" >> ${ENV_SETTINGS_FILE}
     elif [ "$DBTYPE" == "$POSTGRES" ]; then
         SAFE_URL=$(urlenc "$DD_DATABASE_USER")":"$(urlenc "$DD_DATABASE_PASSWORD")"@"$(urlenc "$DD_DATABASE_HOST")":"$(urlenc "$DD_DATABASE_PORT")"/"$(urlenc "$DD_DATABASE_NAME")
         echo "DD_DATABASE_URL=postgres://$SAFE_URL" >> ${ENV_SETTINGS_FILE}
@@ -472,15 +472,15 @@ function install_app() {
     if [ "$VENV_ACTIVE" == "0" ]; then
         pip install --upgrade pip
         pip install -U pip
-        if [ "$DBTYPE" == "$MYSQL" ]; then
-            pip install .[mysql] --ignore-installed Markdown
+        if [ "$DBTYPE" == "$postgres" ]; then
+            pip install .[postgres] --ignore-installed Markdown
         else
             pip install . --ignore-installed Markdown
         fi
     else
         sudo pip install --upgrade pip
-        if [ "$DBTYPE" == "$MYSQL" ]; then
-            sudo -H pip install .[mysql] --ignore-installed Markdown
+        if [ "$DBTYPE" == "$postgres" ]; then
+            sudo -H pip install .[postgres] --ignore-installed Markdown
         else
             sudo -H pip install . --ignore-installed Markdown
         fi
@@ -522,29 +522,29 @@ function install_app() {
     python manage.py collectstatic --noinput
 }
 
-function start_local_mysql_db_server() {
+function start_local_postgres_db_server() {
     # Nasty workaround according to https://serverfault.com/a/872576
     # This error was observed only on travis and not locally:
     # "Fatal error: Can't open and lock privilege tables: Table storage engine for 'user' doesn't have this option"
-    sudo chown -R mysql:mysql /var/lib/mysql /var/run/mysqld
-    sudo service mysql start
+    sudo chown -R postgres:postgres /var/lib/postgres /var/run/postgresd
+    sudo service postgres start
 }
 
-function stop_local_mysql_db_server() {
-    sudo service mysql stop
-    sudo chown -R mysql:mysql /var/lib/mysql /var/run/mysqld
+function stop_local_postgres_db_server() {
+    sudo service postgres stop
+    sudo chown -R postgres:postgres /var/lib/postgres /var/run/postgresd
 }
 
-function set_random_mysql_db_pwd() {
-  sudo chown -R mysql:mysql /var/lib/mysql /var/run/mysqld
-  sudo mysqld_safe --skip-grant-tables >/dev/null 2>&1 &
+function set_random_postgres_db_pwd() {
+  sudo chown -R postgres:postgres /var/lib/postgres /var/run/postgresd
+  sudo postgresd_safe --skip-grant-tables >/dev/null 2>&1 &
   sleep 5
   DB_ROOT_PASS_LEN=`shuf -i 50-60 -n 1`
   if [[ -z "$DD_DATABASE_PASSWORD" ]]; then
     DD_DATABASE_PASSWORD=`pwgen -scn $DB_ROOT_PASS_LEN 1`
   fi
-  mysql mysql -e "UPDATE user SET authentication_string=PASSWORD('$DD_DATABASE_PASSWORD'), plugin='mysql_native_password' WHERE User='root';FLUSH PRIVILEGES;"
-  sudo service mysql stop
+  postgres postgres -e "UPDATE user SET authentication_string=PASSWORD('$DD_DATABASE_PASSWORD'), plugin='postgres_native_password' WHERE User='root';FLUSH PRIVILEGES;"
+  sudo service postgres stop
 }
 
 function upgrade() {
@@ -555,7 +555,7 @@ function upgrade() {
 function remove_install_artifacts() {
   # sudo deluser dojo sudo
   # nodejs yarn autoremove
-  sudo apt-get remove -y mysql-server
+  sudo apt-get remove -y postgres-server
 }
 
 function install_postgres_client() {

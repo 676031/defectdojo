@@ -87,7 +87,7 @@ This will run the application based on merged configurations from docker-compose
 docker-compose restart celeryworker
 ```
 
-*  The mysql port is forwarded to the host so that you can access your database from outside the container. 
+*  The postgres port is forwarded to the host so that you can access your database from outside the container. 
 
 To update changes in static resources, served by nginx, just refresh the browser with ctrl + F5.
 

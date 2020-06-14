@@ -1,5 +1,5 @@
 dependencies:
-- name: mysql
+- name: postgres
   repository: https://kubernetes-charts.storage.googleapis.com
   version: 1.6.2
 - name: postgresql
