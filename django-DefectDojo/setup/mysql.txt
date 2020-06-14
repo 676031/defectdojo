@@ -1,4 +1,0 @@
-# Pip installs needed for postgres DB support
--r ../requirements.txt
-postgresclient==1.4.2
-postgres-connector-python==8.0.14
