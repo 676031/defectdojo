@@ -169,6 +169,13 @@ if os.getenv('DD_DATABASE_URL') is not None:
     DATABASES = {
         'default': env.db('DD_DATABASE_URL')
     }
+    DATABASES['default']['OPTIONS'] = {
+        'ssl': {
+            'sslrootcert': '/etc/ssl/certs/server-ca.pem',
+            'sslcert': '/etc/ssl/certs/client-cert.pem',
+            'sslkey': '/etc/ssl/certs/client-key.pem',
+        }
+    }
 else:
     DATABASES = {
         'default': {
