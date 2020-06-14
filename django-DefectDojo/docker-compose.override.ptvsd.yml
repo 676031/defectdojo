@@ -1,0 +1,26 @@
+---
+version: '3.7'
+services:
+  uwsgi:
+    entrypoint: ['/wait-for-it.sh', '34.69.250.196:5432', '-t', '30', '--', '/entrypoint-uwsgi-ptvsd.sh']
+    volumes:
+      - '.:/app:z'
+    environment:
+      DD_DEBUG: 'True'
+    ports:
+      - target: 3000
+        published: 3000
+        protocol: tcp
+        mode: host
+  celeryworker:
+    volumes:
+      - '.:/app:z'
+  nginx:
+    volumes:
+      - './dojo/static/dojo:/usr/share/nginx/html/static/dojo'
+  mysql:
+    ports:
+      - target: 5432
+        published: 5432
+        protocol: tcp
+        mode: host
